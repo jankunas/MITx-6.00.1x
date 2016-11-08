@@ -122,9 +122,7 @@ def hangman(secretWord):
     while True:
         print('You have %d guesses left' % (8 - mistakesMade))
         print('Available letters: ', getAvailableLetters(lettersGuessed))
-        print('Please guess a letter: ')
-        userInput = input()
-        letter = userInput.lower()
+        letter = (input('Please guess a letter: ')).lower()
         if isLetterInSecretWord(letter, secretWord) and letter not in lettersGuessed:
             lettersGuessed.append(letter)
             print('Good guess: ', getGuessedWord(secretWord, lettersGuessed))
