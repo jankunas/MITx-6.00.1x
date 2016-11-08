@@ -128,10 +128,11 @@ def hangman(secretWord):
         if isLetterInSecretWord(letter, secretWord) and letter not in lettersGuessed:
             lettersGuessed.append(letter)
             print('Good guess: ', getGuessedWord(secretWord, lettersGuessed))
-        elif isLetterInSecretWord(letter, secretWord) and letter in lettersGuessed:
+        elif letter in lettersGuessed:
             print("Ooops! You have already guessed this letter: ", getGuessedWord(secretWord, lettersGuessed))
         else:
             print('Oops! That letter is not in my word: ', getGuessedWord(secretWord, lettersGuessed))
+            lettersGuessed.append(letter)
             mistakesMade += 1
             if mistakesMade == 8:
                 print('You have lost')
@@ -141,11 +142,6 @@ def hangman(secretWord):
             print('Congratulations, you won!')
             break                             
     
-hangman(chooseWord(wordlist))
 
-# When you've completed your hangman function, uncomment these two lines
-# and run this file to test! (hint: you might want to pick your own
-# secretWord while you're testing)
-
-# secretWord = chooseWord(wordlist).lower()
-# hangman(secretWord)
+secretWord = chooseWord(wordlist).lower()
+hangman(secretWord)
